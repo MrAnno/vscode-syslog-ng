@@ -1,0 +1,30 @@
+{
+    "name": "syslog-ng",
+    "displayName": "syslog-ng",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "MrAnno",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MrAnno/vscode-syslog-ng.git"
+    },
+    "engines": {
+        "vscode": "^1.15.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "syslog-ng",
+            "aliases": ["syslog-ng Configuration", "syslog-ng"],
+            "filenamePatterns": ["*syslog-ng*.conf"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "syslog-ng",
+            "scopeName": "source.syslog-ng",
+            "path": "./syntaxes/syslog-ng.tmLanguage.json"
+        }]
+    }
+}

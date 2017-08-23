@@ -1,0 +1,108 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "syslog-ng Configuration",
+	"patterns": [
+		{
+			"include": "#pragma"
+		},
+		{
+			"include": "#keyword"
+		},
+		{
+			"include": "#constant"
+		},
+		{
+			"include": "#string"
+		},
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#option"
+		}
+	],
+	"repository": {
+		"pragma": {
+			"patterns": [{
+				"name": "keyword.control.pragma.syslog-ng",
+				"match": "^\\s*(@\\s*(version|include|define|module))\\b"
+			}]
+		},
+		"keyword": {
+			"patterns": [
+				{
+					"name": "keyword.control.syslog-ng",
+					"match": "(?<![\\w-])(options|source|destination|filter|parser|rewrite|template|template-function|log|junction|channel|block)(?![\\w-])"
+				}
+			]
+		},
+		"option": {
+			"patterns": [{
+				"match": "\\b([A-Za-z][A-Za-z0-9_-]+)\\s*\\(",
+				"captures": {
+					"1": {
+						"name": "entity.name.function.syslog-ng"
+					}
+				}
+			}]
+		},
+		"string": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.syslog-ng",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.syslog-ng",
+							"match": "\\\\."
+						},
+						{
+							"include": "#macro-template-subst"
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.syslog-ng",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"include": "#macro-template-subst"
+						}
+					]
+				}
+			]
+		},
+		"constant": {
+			"patterns": [
+				{
+					"name": "constant.numeric.syslog-ng",
+					"match": "\\b((-|\\+)?[0-9]+\\.[0-9]+|0x[0-9a-fA-F]+|0[0-7]+|(-|\\+)?[0-9]+(M|m|G|g|k|K)?(i|I)?(b|B)?)\\b"
+				},
+				{
+					"name": "constant.language.syslog-ng",
+					"match": "(?<![\\w-])(yes|on|no|off)(?![\\w-])"
+				}
+			]
+		},
+		"macro-template-subst": {
+			"patterns": [
+				{
+					"include": "source.shell#variable"
+				},
+				{
+					"include": "source.shell#interpolation"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [{
+				"name": "comment.line.number-sign.syslog-ng",
+				"begin": "#",
+				"end": "\\n"
+			}]
+		}
+	},
+	"scopeName": "source.syslog-ng"
+}
