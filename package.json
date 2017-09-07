@@ -2,7 +2,7 @@
     "name": "syslog-ng",
     "displayName": "syslog-ng",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "MrAnno",
     "icon": "images/syslog-ng-icon.png",
     "repository": {
@@ -16,16 +16,25 @@
         "Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "syslog-ng",
-            "aliases": ["syslog-ng Configuration", "syslog-ng"],
-            "filenamePatterns": ["*syslog-ng*.conf"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "syslog-ng",
-            "scopeName": "source.syslog-ng",
-            "path": "./syntaxes/syslog-ng.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "syslog-ng",
+                "aliases": [
+                    "syslog-ng Configuration",
+                    "syslog-ng"
+                ],
+                "filenamePatterns": [
+                    "*syslog-ng*.conf"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "syslog-ng",
+                "scopeName": "source.syslog-ng",
+                "path": "./syntaxes/syslog-ng.tmLanguage.json"
+            }
+        ]
     }
 }
