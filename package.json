@@ -4,6 +4,7 @@
     "description": "",
     "version": "0.0.1",
     "publisher": "MrAnno",
+    "icon": "images/syslog-ng-icon.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/MrAnno/vscode-syslog-ng.git"
